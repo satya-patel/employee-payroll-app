@@ -20,20 +20,54 @@ window.addEventListener('DOMContentLoaded', (event) => {
     salary.addEventListener('input', function() {
         output.textContent = salary.value;
     });
-
 });
 
-document.getElementById("submit").onclick = function() {
-    let employee = new EmployeePayroll();
-    employee.name = document.getElementById("name").value;
-    employee.picture = document.querySelector('input[name = profile]:checked').value;
-    employee.gender = document.querySelector('input[name = gender]:checked').value;
-    employee.department = document.querySelector('input[name = department]:checked').value;
-    employee.salary = document.getElementById("salary").value;
-    employee.notes = document.getElementById("notes").value;
-    employee.startDate = new Date(parseInt(document.getElementById("year").value), parseInt(document.getElementById("month").value), parseInt(document.getElementById("day").value));
-};
+const saveForm = () => {
+    try {
+        let EmployeeData = createEmployeePayroll();
+    } catch (e) {
+        return
+    }
+}
 
-document.getElementById("reset").onclick = function() {
-    document.getElementById("emp-form").reset();
+const createEmployeePayroll = () => {
+    let employeePayroll = new EmployeePayroll();
+    try {
+        employeePayroll.name = getInputValueById('#name');
+    } catch (e) {
+        setTextValue('.text-error', e);
+        throw e;
+    }
+    employeePayroll.picture = getSelectedValues('[name=profile]').pop();
+    employeePayroll.gender = getSelectedValues('[name=gender]').pop();
+    employeePayroll.department = getSelectedValues('[name=department]');
+    employeePayroll.salary = getInputValueById('#salary');
+    employeePayroll.notes = getInputValueById('#notes');
+    let date = getInputValueById('#day') + " " + getInputValueById('#month') + " " + getInputValueById('#year');
+    employeePayroll.date = Date.parse(date);
+    alert(employeePayroll.toString());
+    return employeePayroll;
+}
+
+const getSelectedValues = (propertyValue) => {
+    let allItems = document.querySelectorAll(propertyValue);
+    let setItems = [];
+    allItems.forEach(item => {
+        if (item.checked) setItems.push(item.value);
+    });
+    return setItems;
+}
+
+const getInputValueById = (id) => {
+    let value = document.querySelector(id).value;
+    return value;
+}
+
+const getInputElementValue = (id) => {
+    let value = document.getElementById(id).value;
+    return value;
+}
+
+function resetForm() {
+    document.getElementById("empForm").reset();
 }
