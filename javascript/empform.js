@@ -1,17 +1,26 @@
-const salary = document.querySelector('#salary');
-const output = document.querySelector('.salary-output');
-output.textContent = salary.value;
-salary.addEventListener('input', function() {
-    output.textContent = salary.value;
-});
+window.addEventListener('DOMContentLoaded', (event) => {
+    const name = document.querySelector('#name');
+    const textError = document.querySelector('.text-error');
+    name.addEventListener('input', function() {
+        if (name.value.length == 0) {
+            textError.textContent = "";
+            return;
+        }
+        try {
+            (new EmployeePayroll()).name = name.value;;
+            textError.textContent = "";
+        } catch (e) {
+            textError.textContent = e;
+        }
+    });
 
-const text = document.querySelector('#name');
-const textError = document.querySelector('.text-error');
-text.addEventListener('input', function() {
-    const regName = /^[A-Z][a-z]{2,}$/;
-    if (regName.test(text.value))
-        textError.textContent = "";
-    else textError.textContent = "Invalid first name ";
+    const salary = document.querySelector('#salary');
+    const output = document.querySelector('.salary-output');
+    output.textContent = salary.value;
+    salary.addEventListener('input', function() {
+        output.textContent = salary.value;
+    });
+
 });
 
 document.getElementById("submit").onclick = function() {
@@ -24,3 +33,7 @@ document.getElementById("submit").onclick = function() {
     employee.notes = document.getElementById("notes").value;
     employee.startDate = new Date(parseInt(document.getElementById("year").value), parseInt(document.getElementById("month").value), parseInt(document.getElementById("day").value));
 };
+
+document.getElementById("reset").onclick = function() {
+    document.getElementById("emp-form").reset();
+}
