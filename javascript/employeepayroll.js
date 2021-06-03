@@ -15,7 +15,11 @@ class EmployeePayroll {
     }
 
     set name(name) {
-        this._name = name;
+        let nameRegex = /[A-Z][a-z]{2,}/;
+        if (nameRegex.test(name))
+            this._name = name;
+        else
+            throw "Invalid name";
     }
 
     get picture() {
