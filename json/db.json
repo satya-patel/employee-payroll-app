@@ -9,7 +9,7 @@
       "salary": "30000",
       "startDate": "1 Jan 2021",
       "notes": "",
-      "id": 1604589551457,
+      "id":1,
       "profileUrl": "../assets/profile-images/Ellipse 1.png"
     },
     {
@@ -21,7 +21,7 @@
       "salary": "30000",
       "startDate": "1 Jan 2021",
       "notes": "",
-      "id": 1604589594363,
+      "id": 2,
       "profileUrl": "../assets/profile-images/Ellipse 1.png"
     },
     {
@@ -33,7 +33,7 @@
       "salary": "30000",
       "startDate": "1 Jan 2019",
       "notes": "",
-      "id": 1604589699566,
+      "id": 3,
       "profileUrl": "../assets/profile-images/Ellipse -3.png"
     },
     {
@@ -45,7 +45,7 @@
       "salary": "30000",
       "startDate": "1 Jan 2020",
       "notes": "",
-      "id": 1604589731061,
+      "id": 4,
       "profileUrl": "../assets/profile-images/Ellipse -3.png"
     }
   ]
