@@ -1,5 +1,5 @@
 const stringifyDate = (date) => {
-    const options = { day: 'numeric', month: 'short', year: 'numeric' };
+    const options = {day: 'numeric', month: 'short', year: 'numeric'};
     const newDate = !date ? "undefined" : new Date(Date.parse(date)).toLocaleDateString('en-GB', options);
     return newDate;
 };
@@ -10,9 +10,9 @@ const checkName = (name) => {
 }
 
 const checkStartDate = (startDate) => {
-    if (startDate <= new Date()) {
-        startDate = startDate + 1;
-    } else {
-        throw "Invalid date";
-    }
+    let now = new Date();
+    if (startDate > now) throw 'start Date is a Future Date';
+    var diff = Math.abs(now.getTime() - startDate.getTime());
+    if (diff / (1000 * 60 * 60 * 24) > 30)
+            throw 'Start Date is beyond 30 Days';
 }

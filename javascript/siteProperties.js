@@ -1,5 +1,6 @@
-let siteProperties = {
-    homePage: "../pages/home.html",
-    addEmpPayrollPage: "../pages/EmployeePayrollApp.html"
-    use_local_storage: "true"   
+let site_properties = {
+    use_local_storage: "false",
+    home_page: "../pages/home.html",
+    add_emp_payroll_page: "../pages/EmployeePayroll.html",
+    server_url: "http://localhost:3000/EmployeeDB/"
 };
